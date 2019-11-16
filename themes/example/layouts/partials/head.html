@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{{ .Site.Title | safeHTML }}">
+
+  <!-- bulma scss -->
+  {{ $styles := resources.Get "style.scss" | resources.ToCSS | resources.Minify | resources.Fingerprint }}
+  <link rel="stylesheet" href="{{ $styles.RelPermalink }}">
+
+  <!-- js -->
+  <!-- <script src="{{ .Site.BaseURL }}js/index.js"></script> -->
+  <script src="{{ .Site.BaseURL }}js/dist/main.js"></script>
+
+</head>
+<body>
