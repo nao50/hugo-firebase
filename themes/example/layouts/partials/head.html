@@ -9,8 +9,10 @@
   {{ $styles := resources.Get "style.scss" | resources.ToCSS | resources.Minify | resources.Fingerprint }}
   <link rel="stylesheet" href="{{ $styles.RelPermalink }}">
 
+  <!-- font awesome -->
+  <script src="https://kit.fontawesome.com/be3c4f1109.js" crossorigin="anonymous"></script>
+
   <!-- js -->
-  <!-- <script src="{{ .Site.BaseURL }}js/index.js"></script> -->
   <script src="{{ .Site.BaseURL }}js/dist/main.js"></script>
 
 </head>

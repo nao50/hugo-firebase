@@ -4,11 +4,14 @@
   "description": "This is Hugo and Firebase example site",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
     "start": "run-p start:**",
-    "start:hugo": "hugo server -t example -w",
+    "start:hugo": "hugo server -t example -w --environment dev -p 1314",
     "start:webpack": "webpack --watch",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm run build:webpack && npm run build:hugo",
+    "build:webpack": "webpack",
+    "build:hugo": "hugo -t example --minify --environment production",
+    "deploy": "npm run build && firebase deploy"
   },
   "repository": {
     "type": "git",
@@ -22,11 +25,13 @@
   },
   "homepage": "https://github.com/naoyamaguchi/hugo-firebase#readme",
   "devDependencies": {
+    "firebase": "^7.4.0",
     "npm-run-all": "^4.1.5",
     "ts-loader": "^6.2.1",
     "typescript": "^3.7.2",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.9.0"
-  }
+  },
+  "dependencies": {}
 }

@@ -86,6 +86,18 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./themes/example/static/js/bulma.ts":
+/*!*******************************************!*\
+  !*** ./themes/example/static/js/bulma.ts ***!
+  \*******************************************/
+/*! exports provided: Bulma */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"Bulma\", function() { return Bulma; });\nvar Bulma = /** @class */ (function () {\n    function Bulma() {\n    }\n    Bulma.prototype.openNavbarMenu = function () {\n        document.addEventListener('DOMContentLoaded', function () {\n            var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);\n            if ($navbarBurgers.length > 0) {\n                $navbarBurgers.forEach(function (el) {\n                    el.addEventListener('click', function () {\n                        var target = el.dataset.target;\n                        var $target = document.getElementById(target);\n                        el.classList.toggle('is-active');\n                        $target.classList.toggle('is-active');\n                    });\n                });\n            }\n        });\n    };\n    return Bulma;\n}());\n\n\n\n//# sourceURL=webpack:///./themes/example/static/js/bulma.ts?");
+
+/***/ }),
+
 /***/ "./themes/example/static/js/index.ts":
 /*!*******************************************!*\
   !*** ./themes/example/static/js/index.ts ***!
@@ -94,19 +106,19 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _sub__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./sub */ \"./themes/example/static/js/sub.ts\");\n// import 文を使って sub.js ファイルを読み込む。\n\n// sub.jsに定義されたJavaScriptを実行する。\nObject(_sub__WEBPACK_IMPORTED_MODULE_0__[\"hello\"])();\n\n\n//# sourceURL=webpack:///./themes/example/static/js/index.ts?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./router */ \"./themes/example/static/js/router.ts\");\n/* harmony import */ var _bulma__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./bulma */ \"./themes/example/static/js/bulma.ts\");\n\n\n/*\n** Router\n*/\nvar router = new _router__WEBPACK_IMPORTED_MODULE_0__[\"Router\"]();\nrouter.init();\nrouter.get('/', function (req) {\n    console.log('req.path: ', req.path);\n});\nrouter.get('/login/', function (req) {\n    console.log('req.path: ', req.path);\n});\n/*\n** Bulma\n*/\nvar bulma = new _bulma__WEBPACK_IMPORTED_MODULE_1__[\"Bulma\"]();\nbulma.openNavbarMenu();\n\n\n//# sourceURL=webpack:///./themes/example/static/js/index.ts?");
 
 /***/ }),
 
-/***/ "./themes/example/static/js/sub.ts":
-/*!*****************************************!*\
-  !*** ./themes/example/static/js/sub.ts ***!
-  \*****************************************/
-/*! exports provided: hello */
+/***/ "./themes/example/static/js/router.ts":
+/*!********************************************!*\
+  !*** ./themes/example/static/js/router.ts ***!
+  \********************************************/
+/*! exports provided: Router */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"hello\", function() { return hello; });\nfunction hello() {\n    console.log('hello world AAA');\n    // alert(\"helloメソッドが実行された。\");\n}\n\n\n//# sourceURL=webpack:///./themes/example/static/js/sub.ts?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"Router\", function() { return Router; });\n// https://dev.to/kodnificent/how-to-build-a-router-with-vanilla-javascript-2a18\nvar Router = /** @class */ (function () {\n    function Router() {\n        this.routes = [];\n    }\n    Router.prototype.get = function (uri, callback) {\n        // get(r: Route) {\n        if (!uri || !callback)\n            throw new Error('uri or callback must be given');\n        if (typeof uri !== \"string\")\n            throw new TypeError('typeof uri must be a string');\n        if (typeof callback !== \"function\")\n            throw new TypeError('typeof callback must be a function');\n        this.routes.forEach(function (route) {\n            if (route.uri === uri)\n                throw new Error(\"the uri \" + route.uri + \" already exists\");\n        });\n        this.routes.push({ uri: uri, callback: callback });\n    };\n    //\n    Router.prototype.init = function () {\n        var _this = this;\n        this.routes.some(function (route) {\n            var regEx = new RegExp(\"^\" + route.uri + \"$\");\n            var path = window.location.pathname;\n            if (path.match(regEx)) {\n                var req = { path: path };\n                return route.callback.call(_this, req);\n            }\n        });\n    };\n    return Router;\n}());\n\n\n\n//# sourceURL=webpack:///./themes/example/static/js/router.ts?");
 
 /***/ })
 

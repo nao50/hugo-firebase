@@ -1,5 +1,21 @@
-// import 文を使って sub.js ファイルを読み込む。
-import { hello } from "./sub";
+import { Router } from "./router";
+import { Bulma } from "./bulma";
 
-// sub.jsに定義されたJavaScriptを実行する。
-hello();
+/*
+** Router 
+*/
+const router = new Router();
+router.init();
+
+router.get('/', function(req) {
+    console.log('req.path: ', req.path);
+});
+router.get('/login/', function(req) {
+    console.log('req.path: ', req.path);
+});
+
+/*
+** Bulma 
+*/
+const bulma = new Bulma();
+bulma.openNavbarMenu();

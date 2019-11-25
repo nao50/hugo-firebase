@@ -1,0 +1,78 @@
+{{ partial "head.html" . }}
+{{ partial "header.html" . }}
+
+<section class="is-large login-section">
+  <div class="container">
+    <div class="columns is-mobile is-multiline is-centered">
+      <div class="column login-column is-12-mobile is-12-tablet is-8-desktop is-8-fullhd">
+      
+        <div class="card">
+
+          <header class="card-header is-link-card-header">
+            <p class="card-header-title title">
+              Login your account
+            </p>
+          </header>
+
+          <div class="card-content">
+
+              <div class="field is-horizontal input-field">
+                <div class="field-label is-normal">
+                  <label class="label">Email</label>
+                </div>
+                <div class="field-body">
+                  <div class="field">
+                    <p class="control has-icons-left has-icons-right">
+                      <input class="input" type="email" placeholder="Email" id="email">
+                      <span class="icon is-small is-left">
+                        <i class="fas fa-envelope"></i>
+                      </span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="field is-horizontal input-field">
+                <div class="field-label is-normal">
+                  <label class="label">Password</label>
+                </div>
+                <div class="field-body">
+                  <div class="field">
+                    <p class="control has-icons-left">
+                      <input class="input" type="password" placeholder="Password" id="password">
+                      <span class="icon is-small is-left">
+                        <i class="fas fa-lock"></i>
+                      </span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="buttons level">
+                <div class="level-left"></div>
+                <div class="level-right">
+                  <button class="button is-warning level-item" id="sign-up" onclick="onSignUpButtonClicked();">Sign up</button>
+                  <button class="button is-link level-item" id="sign-in" onclick="onSignInButtonClicked();">Login</button>
+                  <button class="button is-warn level-item" id="sign-out" onclick="onSignOutButtonClicked();">Logout</button>
+                </div>
+              </div>
+
+
+          </div>
+        </div>
+
+        <h2>ユーザー情報</h2>
+        <div id="userinfo">
+        </div>
+
+        <!-- ログ出力エリア -->
+        <h2>ログ</h2>
+        <p id="log"></p>
+
+      </div>
+    </div>
+  </div>
+
+</section>
+
+{{ partial "footer.html" . }}

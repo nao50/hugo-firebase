@@ -1,12 +1,39 @@
 <footer class="footer">
   <div class="content has-text-centered">
     <p>
-      <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
-      <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
-      is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+      <strong>Bulma</strong> by <a href="{{ .Site.BaseURL }}">Jeremy Thomas</a>. The source code is licensed
+      <a href="{{ .Site.BaseURL }}">MIT</a>. The website content
+      is licensed <a href="{{ .Site.BaseURL }}">CC BY NC SA 4.0</a>.
     </p>
   </div>
 </footer>
+
+{{ if .Site.IsServer }}
+<script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-firestore.js"></script>
+<script>
+  var firebaseConfig = {
+    apiKey: "{{ .Site.Params.apiKey }}",
+    authDomain: "{{ .Site.Params.authDomain }}",
+    databaseURL: "{{ .Site.Params.databaseURL }}",
+    projectId: "{{ .Site.Params.projectId }}",
+    storageBucket: "{{ .Site.Params.storageBucket }}",
+    messagingSenderId: "{{ .Site.Params.messagingSenderId }}",
+    appId: "{{ .Site.Params.appId }}",
+    measurementId: "{{ .Site.Params.measurementId }}"
+  };
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+{{ else }}
+<script src="/__/firebase/7.4.0/firebase-app.js"></script>
+<script src="/__/firebase/7.4.0/firebase-analytics.js"></script>
+<script src="/__/firebase/7.4.0/firebase-auth.js"></script>
+<script src="/__/firebase/7.4.0/firebase-firestore.js"></script>
+<script src="/__/firebase/init.js"></script>
+{{ end }}
 
 </body>
 </html>
